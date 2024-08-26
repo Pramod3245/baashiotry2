@@ -1,21 +1,24 @@
 import React from "react";
-import { useSortable } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
+import { useDraggable } from "@dnd-kit/core";
 
-export default function Task({ id, title}) {
+export default function Task({ id, title }) {
   const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id });
+    useDraggable({
+      id: id,
+    });
 
   const style = {
+    transform: transform
+      ? `translate(${transform.x}px, ${transform.y}px)`
+      : undefined,
     transition,
-    transform: CSS.Transform.toString(transform),
   };
 
   return (
     <div
       ref={setNodeRef}
-      {...attributes}
       {...listeners}
+      {...attributes}
       className="flex flex-col p-4 mb-2 h-full items-center"
       style={style}
     >

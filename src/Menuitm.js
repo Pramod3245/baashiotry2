@@ -25,8 +25,8 @@ function DraggableMenuitmField(props) {
     id: id.current,
     data: {
       field,
-      fromMenuitm: true
-    }
+      fromMenuitm: true,
+    },
   });
 
   return (
